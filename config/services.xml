@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <imports>
+        <import resource="services/defaults.xml" />
+    </imports>
+
+    <services>
+        <service id="Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler">
+            <argument type="service" id="Redis" />
+            <argument type="collection">
+                <argument type="string" key="prefix">session_</argument>
+            </argument>
+        </service>
+
+        <service id="Redis" class="Redis">
+            <call method="connect">
+                <argument>%env(string:default:default_redis_host:REDIS_HOST)%</argument>
+                <argument>%env(int:default:default_redis_port:REDIS_PORT)%</argument>
+            </call>
+            <call method="select">
+                <argument>%env(int:default:default_redis_database:REDIS_SESSION_DATABASE)%</argument>
+            </call>
+        </service>
+    </services>
+</container>

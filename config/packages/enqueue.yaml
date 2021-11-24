@@ -1,0 +1,5 @@
+# enqueue:
+#     rabbitmq:
+#         transport:
+#             dsn: "%env(string:RABBITMQ_URL)%"
+#         client: ~

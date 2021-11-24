@@ -1,0 +1,5 @@
+shopware:
+    admin_worker:
+        enable_admin_worker: false
+    auto_update:
+        enabled: false
