@@ -4,15 +4,17 @@ This template builds Shopware on Platform.sh using Composer. To get started on P
 
 ## Services
 
--   PHP 7.4
--   MariaDB 10.5
--   Redis 6.0
+- PHP 8.0
+- MariaDB 10.5
+- Redis 6.0
 
-## Post-install
+## First deployment
 
 1. The first time the site is deployed, Shopware's command line installer will run and initialize Shopware. It will not run again unless the `installer/installed` is removed. (Do not remove that file unless you want the installer to run on the next deploy!)
 
 2. The installer will create an administrator account with username/password `admin`/`shopware`. **You need to change this password immediately. Not doing so is a security risk**.
+
+3. As the theme assets are generated in the build hook and cannot be changed in runtime, we need to dump the theme configuration and run a second deployment to have theme assets build. See [Stateless Builds section](#stateless-builds) for this
 
 ## Customizations
 
