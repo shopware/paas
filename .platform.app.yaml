@@ -5,7 +5,7 @@
 name: app
 
 # The type of the application to build.
-type: php:7.4
+type: php:8.0
 build:
     flavor: composer
 
@@ -98,10 +98,12 @@ hooks:
             # that can be ignored (we use stateless build anyway, so this is done already at this point)
             echo "Running system:install (Warnings for theme:compile can be ignored)"
             bin/console system:install --create-database --basic-setup --force
+            bin/console theme:change --all Storefront --no-compile
+            bin/console theme:dump
 
             # generate JWT
             echo "Running system:generate-jwt-secret"
-            bin/console system:generate-jwt-secret
+            bin/console system:generate-jwt-secret || true
 
             # refresh plugins and enable PaaS Plugin
             bin/console plugin:refresh
@@ -190,3 +192,8 @@ workers:
         commands:
             start: |
                 bin/console messenger:consume default --memory-limit=$(cat /run/config.json | jq .info.limits.memory)M --time-limit=295
+    scheduled-task:
+        disk: 128
+        commands:
+            start: |
+                bin/console scheduled-task:run --memory-limit=$(cat /run/config.json | jq .info.limits.memory)M --time-limit=295
