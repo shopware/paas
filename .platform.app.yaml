@@ -27,8 +27,20 @@ variables:
         # Use different redis dbs for cache and sessions
         REDIS_CACHE_DATABASE: 0
         REDIS_SESSION_DATABASE: 2
+
+        # Improve admin build speed
+        DISABLE_ADMIN_COMPILATION_TYPECHECK: 1
     php:
-        upload_max_filesize: 6M
+        upload_max_filesize: 32M
+        post_max_size: 32M
+        memory_limit: 512M
+        'assert.active': 0
+        'opcache.enable_file_override': 1
+        'opcache.interned_strings_buffer': 20
+        'opcache.validate_timestamps': 0
+        'zend.detect_unicode': 0
+        realpath_cache_ttl: 3600
+        'opcache.memory_consumption': 128M
 
 # Specify additional PHP extensions that should be loaded.
 runtime:
