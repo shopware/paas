@@ -130,8 +130,9 @@ hooks:
         fi;
 
         if [ "$PLATFORM_ENVIRONMENT_TYPE" != production ]; then
-            export FRONTEND_URL=`echo $PLATFORM_ROUTES | base64 --decode | jq -r 'to_entries[] | select(.value.id=="shopware") | .key' | sed 's~http[s]*://~~g'`
-            bin/console sales-channel:update:domain "$FRONTEND_URL"
+            export FRONTEND_URL=`echo $PLATFORM_ROUTES | base64 --decode | jq -r 'to_entries[] | select(.value.id=="shopware") | .key'`
+            export FRONTEND_DOMAIN=`php -r 'echo parse_url($_SERVER["FRONTEND_URL"], PHP_URL_HOST);'`
+            bin/console sales-channel:update:domain "$FRONTEND_DOMAIN"
         fi
 
         # optional: run migration automatically with deploy
