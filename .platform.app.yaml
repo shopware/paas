@@ -30,6 +30,9 @@ variables:
 
         # Improve admin build speed
         DISABLE_ADMIN_COMPILATION_TYPECHECK: 1
+
+        # Only build extension. Shopware assets are pre built in the tags
+        SHOPWARE_ADMIN_BUILD_ONLY_EXTENSIONS: 1
     php:
         upload_max_filesize: 32M
         post_max_size: 32M
