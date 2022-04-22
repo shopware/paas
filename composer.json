@@ -54,22 +54,17 @@
             "options": {
                 "symlink": true
             }
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/jenskueper/swag-paas.git"
         }
     ],
     "require": {
         "php": "^7.4.3 || ^8.0",
         "composer-runtime-api": "^2.0",
-        "shopware/administration": "~v6.4.0",
-        "shopware/core": "~v6.4.0",
-        "shopware/elasticsearch": "~v6.4.0",
-        "shopware/recovery": "~v6.4.0",
-        "shopware/storefront": "~v6.4.0",
-        "platformsh/symfonyflex-bridge": "^2.2",
-        "shopware/paas": "dev-master"
+        "shopware/administration": "~v6.4.8",
+        "shopware/core": "~v6.4.8",
+        "shopware/elasticsearch": "~v6.4.8",
+        "shopware/recovery": "~v6.4.8",
+        "shopware/storefront": "~v6.4.8",
+        "platformsh/symfonyflex-bridge": "^2.2"
     },
     "require-dev": {
         "ext-openssl": "*",
