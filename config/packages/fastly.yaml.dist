@@ -1,0 +1,9 @@
+storefront:
+    csrf:
+        mode: ajax
+    reverse_proxy:
+        enabled: true
+        fastly:
+            enabled: true
+            api_key: '%env(FASTLY_API_TOKEN)%'
+            service_id: '%env(FASTLY_SERVICE_ID)%'
