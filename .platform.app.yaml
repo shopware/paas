@@ -89,6 +89,9 @@ hooks:
         # save plugin config for later (will be moved to mount)
         cp var/plugins.json build-plugins.json
 
+        # Remove hashtag to enable fastly
+        # mv config/packages/fastly.yaml.dist config/packages/fastly.yaml
+
     deploy: |
         set -e
 
@@ -138,6 +141,8 @@ hooks:
         # optional: run migration automatically with deploy
         bin/console database:migrate --all
         bin/console cache:clear
+
+        ./setup-fastly.sh
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
