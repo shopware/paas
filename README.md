@@ -1,6 +1,6 @@
-# Shopware for Platform.sh
+# Shopware PaaS
 
-This template builds Shopware on Platform.sh using Composer. To get started on Platform.sh, please visit https://docs.platform.sh/
+This template builds Shopware PaaS using Composer. To get started on PaaS, please visit https://developer.shopware.com/docs/products/paas
 
 ## Services
 
@@ -22,9 +22,9 @@ This project is built on the [shopware/production](https://github.com/shopware/p
 
 The following changes have been made relative to a plain Shopware production project. If using this project as a reference for your own existing project, replicate the changes below to your project.
 
--   The `.platform.app.yaml`, `.platform/services.yaml`, and `.platform/routes.yaml` files have been added. These provide Platform.sh-specific configuration and are present in all projects on Platform.sh. You may customize them as you see fit.
--   An additional Composer library, [`platformsh/symfonyflex-bridge`](https://github.com/platformsh/symfonyflex-bridge), has been added. It is a bridge library which connects Symfony Flex-based application to Platform.sh.
--   The [`platformsh-env.php`](platformsh-env.php) file will map Platform.sh environment variables to the enviroment variables expected by Shopware. It is auto-included from `composer.json` as part of the autoload process.
+-   The `.platform.app.yaml`, `.platform/services.yaml`, and `.platform/routes.yaml` files have been added. These provide PaaS-specific configuration and are present in all projects on PaaS. You may customize them as you see fit.
+-   An additional Composer library, [`platformsh/symfonyflex-bridge`](https://github.com/platformsh/symfonyflex-bridge), has been added. It is a bridge library which connects Symfony Flex-based application to PaaS.
+-   The [`platformsh-env.php`](platformsh-env.php) file will map PaaS environment variables to the enviroment variables expected by Shopware. It is auto-included from `composer.json` as part of the autoload process.
 -   Configuration has been added to use Redis for cache and sessions, see [`config/packages/framework.yaml`](config/packages/framework.yaml)
 -   [`config/packages/shopware.yaml`](config/packages/shopware.yaml) has been updated to disable auto update
 -   [`config/packages/shopware.yaml`](config/packages/shopware.yaml) has been updated to disable the admin worker (a message consumer is started instead, see the `workers` section in [`.platform.app.yaml`](.platform.app.yaml))
@@ -57,7 +57,7 @@ To update the config
 
 1. Add RabbitMQ in [`.platform/services.yaml`](.platform/services.yaml)
 2. Add a relationship for it in [`.platform.app.yaml`](.platform.app.yaml)
-3. Push to Platform.sh (so RabbitMQ is provisioned)
+3. Push to Git (so RabbitMQ is provisioned)
 4. For RabbitMQ to work, you need to manually add a queue named `shopware-queue` and a `messages` exchange. To do this you can e.g. use the platform CLI to open a tunnel (`ssh -L 15672:rabbitmqqueue.internal:15672 $(platform ssh --pipe -A app)`) and open the UI via `http://localhost:15672/`. You can get the credentials via `platform relationships`. `RABBITMQ_URL` is set in [`platformsh-env.php`](platformsh-env.php).
 5. `composer require enqueue/amqp-bunny`
 6. Uncomment [`config/packages/enqueue.yaml`](config/packages/enqueue.yaml)
@@ -65,7 +65,7 @@ To update the config
 ### Fastly
 
 1. Make sure you have at least Shopware 6.4.11.0
-2. Make sure `FASTLY_API_TOKEN` and `FASTLY_SERVICE_ID` are set in the environment or contact Platform.sh when its missing.
+2. Make sure `FASTLY_API_TOKEN` and `FASTLY_SERVICE_ID` are set in the environment or contact Support when its missing.
 3. Enable Fastly config in [`.platform.app.yaml`](.platform.app.yaml) by removing hashtag before `mv config/packages/fastly.yaml.dist config/packages/fastly.yaml`
 4. Push the new config and Fastly is enabled
 
