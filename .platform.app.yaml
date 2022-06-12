@@ -16,7 +16,7 @@ dependencies:
 variables:
     env:
         # Tell Shopware to always install in production-mode.
-        SHOPWARE_ENV: prod
+        APP_ENV: prod
         # Instance ID is empty by default, change to something unique in your project
         INSTANCE_ID: ''
         # Enable HTTP Cache to get cache-control headers
