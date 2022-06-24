@@ -1,6 +1,7 @@
 storefront:
-    csrf:
-        mode: ajax
+    # Enable Ajax Mode for Fastly support
+    # csrf:
+    #     mode: ajax
     theme:
         config_loader_id: Shopware\Storefront\Theme\ConfigLoader\StaticFileConfigLoader
         available_theme_provider: Shopware\Storefront\Theme\ConfigLoader\StaticFileAvailableThemeProvider
