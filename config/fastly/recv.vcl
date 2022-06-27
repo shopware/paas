@@ -25,7 +25,9 @@ if (req.url != req.url.path) {
     "siteurl" + querystring.filtersep() +
     "utm_source" + querystring.filtersep() +
     "utm_medium" + querystring.filtersep() +
-    "utm_campaign"
+    "utm_campaign" + querystring.filtersep() +
+    "_ga" + querystring.filtersep() +
+    "gclid"
     );
 }
 
