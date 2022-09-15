@@ -1,3 +1,6 @@
+# Enable Fastly authentification for single purges
+set req.http.Fastly-Purge-Requires-Auth = "1";
+
 # Mitigate httpoxy application vulnerability, see: https://httpoxy.org/
 unset req.http.Proxy;
 
