@@ -44,12 +44,6 @@ if (req.http.x-forwarded-for) {
     set req.http.X-Forwarded-For = client.ip;
 }
 
-# Normally, you should consider requests other than GET and HEAD to be uncacheable
-# (to this we add the special FASTLYPURGE method)
-if (req.method != "HEAD" && req.method != "GET" && req.method != "FASTLYPURGE") {
-  return(pass);
-}
-
 # Don't cache Authenticate & Authorization
 if (req.http.Authenticate || req.http.Authorization) {
     return (pass);
@@ -60,5 +54,3 @@ if (req.http.Authenticate || req.http.Authorization) {
 if (req.url.path ~ "^/(checkout|account|admin|api)(/.*)?$") {
     return (pass);
 }
-
-return (lookup);
