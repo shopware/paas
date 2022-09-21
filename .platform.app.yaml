@@ -140,7 +140,12 @@ hooks:
 
         # optional: run migration automatically with deploy
         bin/console database:migrate --all
-        bin/console cache:clear
+
+        # run cache clear commands, on grid environments this should run in the deploy hook,
+        # on dedicated generation 2, it will run as part of the pre_start hook (to be set up by Platform.sh support)
+        if [ "$PLATFORM_MODE" != enterprise ]; then
+            sh prestart_cacheclear.sh
+        fi
 
         ./setup-fastly.sh
 
