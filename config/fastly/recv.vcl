@@ -51,6 +51,6 @@ if (req.http.Authenticate || req.http.Authorization) {
 
 # Always pass these paths directly to php without caching
 # Note: virtual URLs might bypass this rule (e.g. /en/checkout)
-if (req.url.path ~ "^/(checkout|account|admin|api)(/.*)?$") {
+if (req.url.path ~ "^/(checkout|account|admin|api|csrf)(/.*)?$") {
     return (pass);
 }
