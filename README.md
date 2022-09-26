@@ -1,6 +1,6 @@
 # Shopware PaaS
 
-This template builds Shopware PaaS using Composer. To get started on PaaS, please visit [https://developer.shopware.com/docs/products/paas](https://developer.shopware.com/docs/products/enterprise-cloud)
+This template builds Shopware PaaS using Composer. To get started on PaaS, please visit [https://developer.shopware.com/docs/products/paas](https://developer.shopware.com/docs/products/paas)
 
 ## Services
 
