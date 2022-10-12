@@ -4,5 +4,5 @@ namespace Shopware\Production;
 
 class HttpKernel extends \Shopware\Core\HttpKernel
 {
-    protected static $kernelClass = Kernel::class;
+    protected static string $kernelClass = Kernel::class;
 }
