@@ -2,7 +2,7 @@
 
 ## This repository is deprecated
 
-This approach is deprecated and will be replaced by a Flex PaaS recipe. See [docs](https://developer.shopware.com/docs/products/paas/repository)
+This approach is deprecated and will be replaced by a [Flex PaaS recipe](https://github.com/shopware/recipes/tree/main/shopware/paas-meta). See [docs](https://developer.shopware.com/docs/products/paas/repository)
 
 This template builds Shopware PaaS using Composer. To get started on PaaS, please visit [https://developer.shopware.com/docs/products/paas](https://developer.shopware.com/docs/products/paas)
 
