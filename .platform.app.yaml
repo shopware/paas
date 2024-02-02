@@ -82,6 +82,12 @@ hooks:
         # compile theme and save config for later (will be moved to mount).
         # warnings can be ignored (the process is trying to access Redis which is not yet available)
         export CI=true
+
+        # dot env dump feature introduced in 6.4.16, we ensure that core >= 6.4.16 is enabled before dumping env
+        if (composer show -f json -N shopware/core ^6.4.16 2>&- || echo '{}') | jq '.name' | grep -q 'shopware/core'; then
+            ./bin/ci dotenv:dump ${APP_ENV}
+        fi
+
         ./bin/build-js.sh
         mkdir build-tmp
         cp -R files/theme-config build-tmp
